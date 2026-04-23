@@ -1,0 +1,299 @@
+@keyframes advisor-card-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.advisor-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: 100%;
+  padding: 1.5rem;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: 1.5rem;
+  box-shadow: 0 24px 80px var(--color-shadow);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.advisor-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-border-strong);
+  box-shadow: 0 28px 90px var(--color-shadow-hover);
+}
+
+.advisor-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.advisor-card__avatar,
+.advisor-card__avatar-skeleton {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.advisor-card__avatar {
+  background: linear-gradient(
+    135deg,
+    var(--color-avatar-gradient-start),
+    var(--color-avatar-gradient-end)
+  );
+  color: var(--color-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  overflow: hidden;
+}
+
+.advisor-card__avatar-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.advisor-card__identity {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.advisor-card__identity-group {
+  display: grid;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+.advisor-card__name {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.25;
+  color: var(--color-heading);
+  overflow-wrap: anywhere;
+}
+
+.advisor-card__specialty {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.advisor-card__price {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 999px;
+  background: var(--color-price-bg);
+  color: var(--color-price-text);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.advisor-card__body {
+  display: grid;
+  gap: 1rem;
+}
+
+.advisor-card__metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.advisor-card__metadata-item,
+.advisor-card__skeleton-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: var(--color-chip-bg);
+  color: var(--color-muted);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.advisor-card__description {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.advisor-card__footer {
+  margin-top: auto;
+}
+
+.advisor-card__actions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.advisor-card__button,
+.advisor-card__skeleton-button {
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.95rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base),
+    background-color var(--transition-base),
+    color var(--transition-base),
+    filter var(--transition-base);
+}
+
+.advisor-card__button {
+  cursor: pointer;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.advisor-card__button::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    var(--color-button-highlight),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+.advisor-card__button--call {
+  background: linear-gradient(
+    135deg,
+    var(--color-call-gradient-start),
+    var(--color-call-gradient-end)
+  );
+  color: var(--color-button-text);
+  box-shadow: var(--color-call-shadow);
+}
+
+.advisor-card__button--chat {
+  background: linear-gradient(
+    135deg,
+    var(--color-chat-gradient-start),
+    var(--color-chat-gradient-end)
+  );
+  color: var(--color-button-text);
+  box-shadow: var(--color-chat-shadow);
+}
+
+.advisor-card__button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: saturate(1.05) brightness(1.03);
+}
+
+.advisor-card__button--call:hover:not(:disabled) {
+  box-shadow: var(--color-call-shadow-hover);
+}
+
+.advisor-card__button--chat:hover:not(:disabled) {
+  box-shadow: var(--color-chat-shadow-hover);
+}
+
+.advisor-card__button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+.advisor-card__button--disabled {
+  background: var(--color-disabled-bg);
+  border-color: var(--color-disabled-border);
+  color: var(--color-button-disabled-text);
+  box-shadow: none;
+  cursor: not-allowed;
+  text-shadow: none;
+}
+
+.advisor-card__button--disabled::before {
+  opacity: 0.35;
+}
+
+.advisor-card--skeleton {
+  pointer-events: none;
+}
+
+.advisor-card__avatar-skeleton,
+.advisor-card__skeleton-line,
+.advisor-card__skeleton-chip,
+.advisor-card__skeleton-button {
+  background: linear-gradient(
+    90deg,
+    var(--color-skeleton-base) 25%,
+    var(--color-skeleton-highlight) 50%,
+    var(--color-skeleton-base) 75%
+  );
+  background-size: 200% 100%;
+  animation: advisor-card-shimmer 1.4s linear infinite;
+}
+
+@media (max-width: 30rem) {
+  .advisor-card__identity {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .advisor-card__price {
+    align-self: flex-start;
+  }
+}
+
+.advisor-card__skeleton-line {
+  display: block;
+  width: 100%;
+  height: 0.9rem;
+  border-radius: 999px;
+}
+
+.advisor-card__skeleton-line--short {
+  width: 68%;
+}
+
+.advisor-card__skeleton-line--price {
+  width: 6rem;
+}
+
+.advisor-card__skeleton-chip {
+  width: 7.5rem;
+}
+
+.advisor-card__skeleton-button {
+  border-radius: 0.95rem;
+}

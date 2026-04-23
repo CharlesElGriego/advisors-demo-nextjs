@@ -1,0 +1,8 @@
+.git
+.next
+.husky/_
+coverage
+node_modules
+playwright-report
+test-results
+Front_End_Dev_Case_Study 5.pdf
